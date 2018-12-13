@@ -22,10 +22,10 @@ body {
 .cook-book-item {
   margin: 0;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-box-align: normal;
+  -webkit-align-items: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
   padding: 0 20px;
   background-color: #fff;
   border-bottom: 1px solid #efefef;
@@ -33,7 +33,17 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  min-height: 59px;
+
+  .recipe-item {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    width: 100%;
+
+    .recipe-title {
+      min-height: 59px;
+      text-align: left;
+    }
+  }
 
   .handler {
     position: relative;
@@ -43,6 +53,7 @@ body {
     height: 11px;
     opacity: .25;
     margin-right: 20px;
+    margin-top: 20px;
     cursor: row-resize;
     background: -webkit-linear-gradient(top,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);
     background: linear-gradient(180deg,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);

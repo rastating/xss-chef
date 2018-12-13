@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBan } from '@fortawesome/free-solid-svg-icons'
 import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 import * as Recipes from '~/recipes'
 
@@ -8,6 +10,7 @@ class CookBookItem extends React.Component {
 
     this.loadItem = this.loadItem.bind(this)
     this.getStateClassName = this.getStateClassName.bind(this)
+    this.disableRecipe = this.disableRecipe.bind(this)
   }
 
   loadItem () {
@@ -46,9 +49,16 @@ class CookBookItem extends React.Component {
     let isValid = recipe && recipe.validate(instance)
 
     return (
-      <div className={ this.getStateClassName(isValid) }>
+      <div className={ `recipe-item ${this.getStateClassName(isValid)}` }>
         <div className="recipe-title">
-          { recipe.title }
+          <span className="float-left">
+            { recipe.title }
+          </span>
+          <FontAwesomeIcon
+            icon={faBan}
+            className="float-right"
+            onClick={this.disableRecipe(this.props.id)}
+          />
         </div>
 
         { recipe.render(instance) }

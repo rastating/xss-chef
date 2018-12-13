@@ -15,11 +15,14 @@ describe('<CookBookItem />', () => {
     valid: false
   }]
 
-  let wrapper
+  let wrapper, disableRecipe
+
   beforeEach(() => {
+    disableRecipe = jest.fn()
     wrapper = shallow(
       <CookBookItem
         cookBook={cookBookDouble}
+        disableRecipe={disableRecipe}
         id="DummyRecipe-0002"
       />
     )
@@ -39,7 +42,7 @@ describe('<CookBookItem />', () => {
   })
 
   it('should render the recipe title', () => {
-    let titleElement = wrapper.find('div.recipe-title')
+    let titleElement = wrapper.find('div.recipe-title span')
     expect(titleElement).toHaveLength(1)
     expect(titleElement.text()).toEqual('Dummy Recipe')
   })
@@ -50,13 +53,15 @@ describe('<CookBookItem />', () => {
     expect(dummyElement.text()).toEqual('Rendered DummyRecipe-0002')
   })
 
-  it.skip('should render a "disable" button', () => {
-
+  it('should render a "disable" button', () => {
+    const button = wrapper.find('.recipe-title FontAwesomeIcon')
+    expect(button).toHaveLength(1)
   })
 
   describe('when the disable button is clicked', () => {
-    it.skip('should invoke `props.disableRecipe`', () => {
-      
+    it('should invoke `props.disableRecipe`', () => {
+      wrapper.find('.recipe-title FontAwesomeIcon').simulate('click')
+      expect(disableRecipe).toHaveBeenCalledWith('DummyRecipe-0002')
     })
   })
 
