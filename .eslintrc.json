@@ -1,0 +1,34 @@
+{
+    "extends": "standard",
+    "overrides": [
+      {
+        "files": ["*spec.js", "*.spec.jsx", "test/**/*.js"],
+        "rules": {
+          "no-unused-expressions": "off",
+          "no-unused-vars": "off"
+        },
+        "globals": {
+          "describe": false,
+          "test": false,
+          "shallow": false,
+          "mount": false,
+          "React": false,
+          "beforeEach": false,
+          "afterEach": false,
+          "beforeAll": false,
+          "afterAll": false,
+          "before": false,
+          "after": false,
+          "expect": false,
+          "jest": false,
+          "it": false
+        }
+      },
+      {
+        "files": ["**/*.jsx"],
+        "rules": {
+          "no-unused-vars": "off"
+        }
+      }
+    ]
+}

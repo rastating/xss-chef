@@ -1,0 +1,50 @@
+ul {
+  background-color: #f3f3f3;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  padding: 0;
+  list-style: none;
+
+  width: 400px;
+  margin-top: 100px;
+  display: inline-block;
+}
+
+div {
+  text-align: center;
+}
+
+body {
+
+  background-color: rgb(249, 249, 249);
+}
+
+.cook-book-item {
+  margin: 0;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #efefef;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  min-height: 59px;
+
+  .handler {
+    position: relative;
+    top: 1px;
+    display: block;
+    width: 18px;
+    height: 11px;
+    opacity: .25;
+    margin-right: 20px;
+    cursor: row-resize;
+    background: -webkit-linear-gradient(top,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);
+    background: linear-gradient(180deg,#000,#000 20%,#fff 0,#fff 40%,#000 0,#000 60%,#fff 0,#fff 80%,#000 0,#000);
+  }
+}

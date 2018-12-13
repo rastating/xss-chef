@@ -1,0 +1,14 @@
+{
+    "presets":[
+        "env", "react"
+    ],
+    "plugins": [
+      [
+        "module-resolver", {
+          "alias": {
+            "~": "./"
+          }
+        }
+      ]
+    ]
+}

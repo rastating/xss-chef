@@ -1,0 +1,54 @@
+{
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "build-dev": "webpack --config webpack.dev.js",
+    "start:dev": "webpack-dev-server --config webpack.dev.js"
+  },
+  "dependencies": {
+    "bootstrap": "4.1.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-sortable-hoc": "^0.8.4",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "7",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "node-sass": "^4.10.0",
+    "nsp": "^3.2.1",
+    "redux-test-utils": "^0.3.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "recipes$": "<rootDir>/test/mocks/recipes.jsx"
+    },
+    "setupFiles": [
+      "<rootDir>/test/setup/enzyme.js"
+    ]
+  }
+}
