@@ -13,4 +13,13 @@ describe('CookBook reducer', () => {
       expect(state).toHaveLength(1)
     })
   })
+
+  describe('when the action type is COOK_BOOK_RECIPE_ADDED', () => {
+    it('should replace the state with current payload', () => {
+      let action = actions.updateCookBook(['new state'])
+      let state = reducer(undefined, action)
+      expect(state).toHaveLength(1)
+      expect(state[0]).toEqual('new state')
+    })
+  })
 })
