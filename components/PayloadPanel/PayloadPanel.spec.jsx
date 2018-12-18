@@ -48,7 +48,7 @@ describe('<PayloadPanel />', () => {
     describe('when multiple recipes are present', () => {
       it('should invoke `cook` with the `vars` returned from the previous recipe', () => {
         expect(global.cookCallback).toHaveBeenNthCalledWith(1, cookBookDouble[0], {
-          payload: '__XSS_CHEF_ENTRY_POINT_'
+          payload: '__XSS_CHEF_ENTRY_POINT__'
         })
 
         expect(global.cookCallback).toHaveBeenNthCalledWith(2, cookBookDouble[1], {

@@ -28,7 +28,7 @@ class PayloadPanel extends React.Component {
     }
 
     let exports = {
-      payload: '__XSS_CHEF_ENTRY_POINT_'
+      payload: '__XSS_CHEF_ENTRY_POINT__'
     }
 
     for (let i = 0; i < items.length; i++) {

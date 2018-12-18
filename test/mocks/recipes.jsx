@@ -8,7 +8,7 @@ let DummyRecipe = {
     }
 
     return Object.assign({}, instance.exports, {
-      payload: `${vars.payload.replace('__XSS_CHEF_ENTRY_POINT_', 'Cooked')} ${instance.id}`.trim()
+      payload: `${vars.payload.replace('__XSS_CHEF_ENTRY_POINT__', 'Cooked')} ${instance.id}`.trim()
     })
   },
   render: (instance) => {
