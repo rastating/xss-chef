@@ -27,4 +27,13 @@ describe('CookBook actions roll-up', () => {
     expect(actions.updateCookBook).toBeDefined()
     expect(typeof actions.updateCookBook).toBe('function')
   })
+
+  it('should export a setRecipeProperty function', () => {
+    expect(actions.setRecipeProperty).toBeDefined()
+    expect(typeof actions.setRecipeProperty).toBe('function')
+  })
+
+  it('should export the recipe property set action constant', () => {
+    expect(actions.COOK_BOOK_RECIPE_PROPERTY_SET).toBeDefined()
+  })
 })

@@ -60,3 +60,23 @@ describe('.updateCookBook', () => {
     expect(subject.type).toEqual(actions.COOK_BOOK_UPDATED)
   })
 })
+
+describe('.setRecipeProperty', () => {
+  let subject
+
+  beforeAll(() => {
+    subject = actions.setRecipeProperty('DummyRecipe-001', 'foo', 'bar')
+  })
+
+  it('should return a payload containing the recipe ID and property KVP', () => {
+    expect(subject.payload).toEqual({
+      id: 'DummyRecipe-001',
+      key: 'foo',
+      value: 'bar'
+    })
+  })
+
+  it('should have a {type} of `COOK_BOOK_RECIPE_PROPERTY_SET`', () => {
+    expect(subject.type).toEqual(actions.COOK_BOOK_RECIPE_PROPERTY_SET)
+  })
+})

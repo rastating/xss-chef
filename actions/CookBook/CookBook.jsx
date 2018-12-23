@@ -1,6 +1,7 @@
 export const COOK_BOOK_RECIPE_ADDED = 'COOK_BOOK_RECIPE_ADDED'
 export const COOK_BOOK_RECIPE_DISABLED = 'COOK_BOOK_RECIPE_DISABLED'
 export const COOK_BOOK_UPDATED = 'COOK_BOOK_UPDATED'
+export const COOK_BOOK_RECIPE_PROPERTY_SET = 'COOK_BOOK_RECIPE_PROPERTY_SET'
 
 export function addRecipe (className) {
   return {
@@ -25,5 +26,16 @@ export function updateCookBook (cookBook) {
   return {
     type: COOK_BOOK_UPDATED,
     payload: cookBook
+  }
+}
+
+export function setRecipeProperty (id, key, value) {
+  return {
+    type: COOK_BOOK_RECIPE_PROPERTY_SET,
+    payload: {
+      id: id,
+      key: key,
+      value: value
+    }
   }
 }
