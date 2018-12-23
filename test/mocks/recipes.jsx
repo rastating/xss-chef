@@ -11,7 +11,11 @@ let DummyRecipe = {
       payload: `${vars.payload.replace('__XSS_CHEF_ENTRY_POINT__', 'Cooked')} ${instance.id}`.trim()
     })
   },
-  render: (instance) => {
+  render: (instance, setRecipeProperty) => {
+    if (setRecipeProperty) {
+      setRecipeProperty(instance.id, 'foo', 'bar')
+    }
+
     return (
       <div className="recipe-content">
         Rendered {instance.id}

@@ -42,4 +42,15 @@ describe('<CookBookItem />', () => {
       }
     })).toBe(true)
   })
+
+  it('should map the setRecipeProperty action creator', () => {
+    expect(store.isActionDispatched({
+      type: 'COOK_BOOK_RECIPE_PROPERTY_SET',
+      payload: {
+        id: 'DummyRecipe-0001',
+        key: 'foo',
+        value: 'bar'
+      }
+    })).toBe(true)
+  })
 })

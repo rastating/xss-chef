@@ -61,7 +61,7 @@ class CookBookItem extends React.Component {
           />
         </div>
 
-        { recipe.render(instance) }
+        { recipe.render(instance, this.props.setRecipeProperty) }
       </div>
     )
   }
