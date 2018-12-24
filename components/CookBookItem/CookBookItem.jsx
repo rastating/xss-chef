@@ -36,9 +36,9 @@ class CookBookItem extends React.Component {
     }
   }
 
-  disableRecipe (id) {
+  disableRecipe () {
     if (this.props.disableRecipe) {
-      this.props.disableRecipe(id)
+      this.props.disableRecipe(this.props.id)
     }
   }
 
@@ -57,7 +57,7 @@ class CookBookItem extends React.Component {
           <FontAwesomeIcon
             icon={faBan}
             className="float-right"
-            onClick={this.disableRecipe(this.props.id)}
+            onClick={this.disableRecipe}
           />
         </div>
 

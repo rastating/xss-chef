@@ -10,7 +10,12 @@ const DragHandle = SortableHandle(() => (<span className="handler"></span>))
 const SortableItem = SortableElement(({ recipeId, props }) => (
   <li className="cook-book-item">
     <DragHandle />
-    <CookBookItem cookBook={props.cookBook} id={recipeId} />
+    <CookBookItem
+      id={recipeId}
+      cookBook={props.cookBook}
+      disableRecipe={props.disableRecipe}
+      setRecipeProperty={props.setRecipeProperty}
+    />
   </li>
 ))
 

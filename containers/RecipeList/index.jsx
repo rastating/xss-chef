@@ -1,2 +1,2 @@
-import CookBookItem from './CookBookItem'
-export default CookBookItem
+import RecipeList from './RecipeList'
+export default RecipeList

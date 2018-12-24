@@ -11,6 +11,9 @@ let DummyRecipe = {
       payload: `${vars.payload.replace('__XSS_CHEF_ENTRY_POINT__', 'Cooked')} ${instance.id}`.trim()
     })
   },
+  init: () => {
+    return { defaultValue: true }
+  },
   render: (instance, setRecipeProperty) => {
     if (setRecipeProperty) {
       setRecipeProperty(instance.id, 'foo', 'bar')
@@ -30,6 +33,7 @@ let DummyRecipe = {
 let DummyRecipe2 = {
   title: 'Dummy Recipe 2',
   cook: () => '',
+  init: () => { return { someVar: 'var' } },
   render: () => (<div />),
   validate: () => true
 }

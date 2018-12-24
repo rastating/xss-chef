@@ -8,13 +8,19 @@ describe('CookBook reducer', () => {
 
   describe('when the action type is COOK_BOOK_ADD_RECIPE', () => {
     it('should append a new item to the state', () => {
-      let action = actions.addRecipe('DummyClass')
+      let action = actions.addRecipe('DummyRecipe')
       let state = reducer(undefined, action)
       expect(state).toHaveLength(1)
     })
+
+    it('should merge the result of `recipe.init()` into the initial item state', () => {
+      let action = actions.addRecipe('DummyRecipe')
+      let state = reducer(undefined, action)
+      expect(state[0].defaultValue).toBe(true)
+    })
   })
 
-  describe('when the action type is COOK_BOOK_RECIPE_ADDED', () => {
+  describe('when the action type is COOK_BOOK_UPDATED', () => {
     it('should replace the state with current payload', () => {
       let action = actions.updateCookBook(['new state'])
       let state = reducer(undefined, action)

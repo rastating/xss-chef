@@ -40,4 +40,12 @@ describe('<CookBook />', () => {
       payload: cookBookDouble
     })).toBe(true)
   })
+
+  it('should map the disableRecipe action creator', () => {
+    wrapper.props().disableRecipe('DummyId')
+    expect(store.isActionDispatched({
+      type: 'COOK_BOOK_RECIPE_DISABLED',
+      payload: { id: 'DummyId' }
+    }))
+  })
 })

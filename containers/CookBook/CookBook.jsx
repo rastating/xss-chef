@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateCookBook } from '~/actions/CookBook'
+import { updateCookBook, disableRecipe, setRecipeProperty } from '~/actions/CookBook'
 
 import CookBook from '~/components/CookBook'
 
@@ -12,7 +12,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    updateCookBook
+    updateCookBook,
+    disableRecipe,
+    setRecipeProperty
   }, dispatch)
 }
 

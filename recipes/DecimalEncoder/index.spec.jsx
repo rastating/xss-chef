@@ -19,4 +19,9 @@ describe('Default export', () => {
     expect(DecimalEncoder.validate).toBeDefined()
     expect(typeof DecimalEncoder.validate).toBe('function')
   })
+
+  it('should contain a `init` function', () => {
+    expect(DecimalEncoder.init).toBeDefined()
+    expect(typeof DecimalEncoder.init).toBe('function')
+  })
 })

@@ -1,14 +1,15 @@
 import * as actions from '~/actions/CookBook'
+import * as recipes from '~/recipes'
 
 const initialState = []
 
 const cookBook = (previousState = initialState, action) => {
-  let state = previousState
+  let state = Object.assign([], previousState)
   let payload = action.payload
 
   switch (action.type) {
     case actions.COOK_BOOK_RECIPE_ADDED:
-      state.push(payload)
+      state.push(Object.assign({}, payload, recipes[payload.className].init()))
       break
 
     case actions.COOK_BOOK_UPDATED:

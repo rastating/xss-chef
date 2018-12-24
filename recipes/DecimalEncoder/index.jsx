@@ -1,8 +1,9 @@
-import { cook, render, validate } from './DecimalEncoder'
+import { cook, render, validate, init } from './DecimalEncoder'
 
 export default {
   title: 'Decimal Encoder',
   cook: cook,
   render: render,
-  validate: validate
+  validate: validate,
+  init: init
 }

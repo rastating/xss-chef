@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import { cook, render, validate } from './DecimalEncoder'
+import { cook, render, validate, init } from './DecimalEncoder'
 
 describe('DecimalEncoder', () => {
   const payloadSample = 'function (x) { x(); __XSS_CHEF_ENTRY_POINT__ }()'
@@ -45,18 +45,6 @@ describe('DecimalEncoder', () => {
       expect(wrapper.find('input[type="checkbox"]')).toHaveLength(1)
     })
 
-    describe('if `instance.useEval` has not been defined', () => {
-      it('should call `setRecipeProperty` to set `useEval` to true', () => {
-        const setRecipeProperty = jest.fn()
-        render(instance, setRecipeProperty)
-        expect(setRecipeProperty).toHaveBeenLastCalledWith(
-          'DummyTest-001',
-          'useEval',
-          true
-        )
-      })
-    })
-
     describe('when the checkbox changes value', () => {
       it('should call `setRecipeProperty`', () => {
         const setRecipeProperty = jest.fn()
@@ -89,6 +77,12 @@ describe('DecimalEncoder', () => {
   describe('.validate', () => {
     it('should return true', () => {
       expect(validate(instance)).toBe(true)
+    })
+  })
+
+  describe('.init', () => {
+    it('should define `useEval` as `true`', () => {
+      expect(init().useEval).toBe(true)
     })
   })
 })

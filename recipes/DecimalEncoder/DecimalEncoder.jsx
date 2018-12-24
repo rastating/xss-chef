@@ -19,11 +19,13 @@ export function cook (instance, vars) {
   }
 }
 
-export function render (instance, setRecipeProperty) {
-  if (instance.useEval === undefined) {
-    setRecipeProperty(instance.id, 'useEval', true)
+export function init () {
+  return {
+    useEval: true
   }
+}
 
+export function render (instance, setRecipeProperty) {
   return (
     <div>
       <input
