@@ -27,4 +27,12 @@ let DummyRecipe = {
   }
 }
 
+let DummyRecipe2 = {
+  title: 'Dummy Recipe 2',
+  cook: () => '',
+  render: () => (<div />),
+  validate: () => true
+}
+
 export { DummyRecipe }
+export { DummyRecipe2 }
