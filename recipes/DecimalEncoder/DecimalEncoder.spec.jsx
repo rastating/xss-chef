@@ -13,7 +13,7 @@ describe('DecimalEncoder', () => {
       let payload = cook(
         Object.assign({}, instance, { useEval: false }),
         { payload: payloadSample }
-      )
+      ).payload
 
       expect(payload).toMatch(
         /String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)/
@@ -21,7 +21,7 @@ describe('DecimalEncoder', () => {
     })
 
     it('should place the entry point placeholder after the encoded payload', () => {
-      let payload = cook(instance, { payload: payloadSample })
+      let payload = cook(instance, { payload: payloadSample }).payload
       expect(payload).toMatch(/\n__XSS_CHEF_ENTRY_POINT__$/)
     })
 
@@ -30,7 +30,7 @@ describe('DecimalEncoder', () => {
         let payload = cook(
           Object.assign({}, instance, { useEval: true }),
           { payload: payloadSample }
-        )
+        ).payload
 
         expect(payload).toMatch(
           /eval\(String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)\)/

@@ -37,14 +37,14 @@ class PayloadPanel extends React.Component {
       exports = recipe.cook(instance, exports)
     }
 
-    return exports.payload
+    return exports.payload.replace(/__XSS_CHEF_.+?__/g, '')
   }
 
   render () {
     let payload = this.compile()
     return (
       <div>
-        <textarea>{ payload }</textarea>
+        <textarea readOnly={true} value={payload}></textarea>
       </div>
     )
   }

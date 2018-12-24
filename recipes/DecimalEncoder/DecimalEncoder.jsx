@@ -13,9 +13,13 @@ export function cook (instance, vars) {
   }
 
   if (instance.useEval) {
-    return `eval(String.fromCharCode(${encoded}))\n__XSS_CHEF_ENTRY_POINT__`
+    return {
+      payload: `eval(String.fromCharCode(${encoded}))\n__XSS_CHEF_ENTRY_POINT__`
+    }
   } else {
-    return `String.fromCharCode(${encoded})\n__XSS_CHEF_ENTRY_POINT__`
+    return {
+      payload: `String.fromCharCode(${encoded})\n__XSS_CHEF_ENTRY_POINT__`
+    }
   }
 }
 

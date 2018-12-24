@@ -64,7 +64,7 @@ describe('<PayloadPanel />', () => {
     })
 
     it('should render the final payload as text', () => {
-      expect(wrapper.find('textarea').text()).toEqual(
+      expect(wrapper.find('textarea').props().value).toEqual(
         'Cooked DummyRecipe-0001 DummyRecipe-0002 DummyRecipe-0003'
       )
     })
