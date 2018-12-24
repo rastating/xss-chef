@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { createMockStore } from 'redux-test-utils'
-import CookBook from './CookBook'
+import PayloadPanel from './PayloadPanel'
 
-describe('<CookBook />', () => {
+describe('<PayloadPanel />', () => {
   const cookBookDouble = [{
     id: 'DummyRecipe-0001',
     className: 'DummyRecipe'
@@ -26,18 +26,10 @@ describe('<CookBook />', () => {
 
   let wrapper
   beforeAll(() => {
-    wrapper = shallow(<CookBook />, { context })
+    wrapper = shallow(<PayloadPanel />, { context })
   })
 
   it('should map `state.cookBook` to `props`', () => {
     expect(wrapper.props().cookBook).toEqual(cookBookDouble)
-  })
-
-  it('should map the updateCookBook action creator', () => {
-    wrapper.dive().instance().onSortEnd(0, 1)
-    expect(store.isActionDispatched({
-      type: 'COOK_BOOK_UPDATED',
-      payload: cookBookDouble
-    })).toBe(true)
   })
 })
