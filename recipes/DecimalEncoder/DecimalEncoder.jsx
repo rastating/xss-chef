@@ -33,6 +33,7 @@ export function render (instance, setRecipeProperty) {
   return (
     <div>
       <input
+        id={`${instance.id}-useEval`}
         type="checkbox"
         checked={instance.useEval}
         onChange={e => setRecipeProperty(
@@ -41,6 +42,7 @@ export function render (instance, setRecipeProperty) {
           e.target.checked
         )}
       />
+      <label for={`${instance.id}-useEval`}>Execute with eval</label>
     </div>
   )
 }
