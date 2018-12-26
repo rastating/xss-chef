@@ -31,18 +31,23 @@ export function init () {
 
 export function render (instance, setRecipeProperty) {
   return (
-    <div>
+    <div className="form-group form-check">
       <input
         id={`${instance.id}-useEval`}
         type="checkbox"
         checked={instance.useEval}
+        className="form-check-input"
         onChange={e => setRecipeProperty(
           instance.id,
           'useEval',
           e.target.checked
         )}
       />
-      <label for={`${instance.id}-useEval`}>Execute with eval</label>
+      <label
+        className="form-check-label"
+        for={`${instance.id}-useEval`}>
+        Execute with eval
+      </label>
     </div>
   )
 }

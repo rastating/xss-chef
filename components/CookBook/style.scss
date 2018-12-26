@@ -1,22 +1,9 @@
 ul {
   background-color: #f3f3f3;
-  border: 1px solid #efefef;
-  border-radius: 3px;
   padding: 0;
   list-style: none;
-
-  width: 400px;
-  margin-top: 100px;
+  width: 100%;
   display: inline-block;
-}
-
-div {
-  text-align: center;
-}
-
-body {
-
-  background-color: rgb(249, 249, 249);
 }
 
 .cook-book-item {
@@ -27,8 +14,8 @@ body {
   -ms-flex-align: normal;
   align-items: normal;
   padding: 0 20px;
-  background-color: #fff;
-  border-bottom: 1px solid #efefef;
+  background-color: #d4edda;
+  border-bottom: 1px solid #c3e6cb;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -38,10 +25,16 @@ body {
     margin-top: 14px;
     margin-bottom: 14px;
     width: 100%;
+    color: #155724;
 
     .recipe-title {
       min-height: 59px;
       text-align: left;
+      font-weight: 700;
+    }
+
+    .fa-ban {
+      color: #9e9e9e;
     }
   }
 

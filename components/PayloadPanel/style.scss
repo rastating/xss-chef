@@ -1,0 +1,13 @@
+.payload-panel {
+  height: 100%;
+  max-height: 100%;
+
+  textarea {
+    padding: 3px;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    width: 100%;
+    height: calc(100% - 48px);
+    border: none;
+    resize: none;
+  }
+}

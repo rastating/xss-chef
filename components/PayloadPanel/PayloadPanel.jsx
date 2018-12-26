@@ -1,3 +1,4 @@
+import './style.scss'
 import React from 'react'
 import * as Recipes from '~/recipes'
 
@@ -43,7 +44,7 @@ class PayloadPanel extends React.Component {
   render () {
     let payload = this.compile()
     return (
-      <div>
+      <div className="payload-panel">
         <textarea readOnly={true} value={payload}></textarea>
       </div>
     )
