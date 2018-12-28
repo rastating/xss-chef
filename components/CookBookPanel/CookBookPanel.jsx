@@ -14,11 +14,13 @@ class CookBookPanel extends React.Component {
             <FontAwesomeIcon
               className="cook-book-action add-recipe"
               icon={faPlusCircle}
+              onClick={this.props.onAddClick}
             />
 
             <FontAwesomeIcon
               className="cook-book-action reset-cook-book"
               icon={faTrashAlt}
+              onClick={this.props.onResetClick}
             />
           </div>
         </div>
