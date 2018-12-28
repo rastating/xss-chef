@@ -1,12 +1,12 @@
 .payload-panel {
-  height: 100%;
+  height: calc(100% - 50px);
   max-height: 100%;
 
   textarea {
     padding: 3px;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     width: 100%;
-    height: calc(100% - 48px);
+    height: 100%;
     border: none;
     resize: none;
   }

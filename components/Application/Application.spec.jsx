@@ -1,7 +1,7 @@
 import React from 'react'
 import Application from './Application'
 import PayloadPanel from '~/containers/PayloadPanel'
-import RecipeList from '~/containers/RecipeList'
+import RecipeListPanel from '~/components/RecipeListPanel'
 import { shallow } from 'enzyme'
 
 describe('<Application />', () => {
@@ -29,11 +29,7 @@ describe('<Application />', () => {
     expect(wrapper.find(PayloadPanel)).toHaveLength(1)
   })
 
-  describe('when the `CookBookPanel.onAddClick` event is fired', () => {
-    it('should render a <RecipeList />', () => {
-      expect(wrapper.find(RecipeList)).toHaveLength(0)
-      wrapper.find('CookBookPanel').simulate('addClick')
-      expect(wrapper.find(RecipeList)).toHaveLength(1)
-    })
+  it('should render a <RecipeListPanel />', () => {
+    expect(wrapper.find(RecipeListPanel)).toHaveLength(1)
   })
 })
