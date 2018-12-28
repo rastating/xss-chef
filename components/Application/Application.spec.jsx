@@ -1,8 +1,8 @@
 import React from 'react'
 import Application from './Application'
-import ReduxWrapper from '~/test/helpers/ReduxWrapper'
+import PayloadPanel from '~/containers/PayloadPanel'
 import RecipeList from '~/containers/RecipeList'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 
 describe('<Application />', () => {
   let wrapper
@@ -26,26 +26,14 @@ describe('<Application />', () => {
   })
 
   it('should render a <PayloadPanel />', () => {
-    expect(wrapper.find('Connect(PayloadPanel)')).toHaveLength(1)
+    expect(wrapper.find(PayloadPanel)).toHaveLength(1)
   })
 
   describe('when the `CookBookPanel.onAddClick` event is fired', () => {
-    it('should set `state.recipeListOpen` to `true`', () => {
-      expect(wrapper.state().recipeListOpen).toBe(false)
-      wrapper.find('CookBookPanel').simulate('addClick')
-      expect(wrapper.state().recipeListOpen).toBe(true)
-    })
-  })
-
-  describe('when `state.recipeListOpen` is `true`', () => {
     it('should render a <RecipeList />', () => {
-      wrapper.setState({ recipeListOpen: false })
-      wrapper.update()
-      expect(wrapper.find('Connect(RecipeList)')).toHaveLength(0)
-
-      wrapper.setState({ recipeListOpen: true })
-      wrapper.update()
-      expect(wrapper.find('Connect(RecipeList)')).toHaveLength(1)
+      expect(wrapper.find(RecipeList)).toHaveLength(0)
+      wrapper.find('CookBookPanel').simulate('addClick')
+      expect(wrapper.find(RecipeList)).toHaveLength(1)
     })
   })
 })
