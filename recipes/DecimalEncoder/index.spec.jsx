@@ -5,6 +5,10 @@ describe('Default export', () => {
     expect(DecimalEncoder.title).toEqual('Decimal Encoder')
   })
 
+  it('should have a description', () => {
+    expect(DecimalEncoder.description).toBeDefined()
+  })
+
   it('should contain a `cook` function', () => {
     expect(DecimalEncoder.cook).toBeDefined()
     expect(typeof DecimalEncoder.cook).toBe('function')

@@ -13,6 +13,7 @@ class RecipeList extends React.Component {
     for (let name in Recipes) {
       this.state.recipes.push({
         title: Recipes[name].title,
+        description: Recipes[name].description,
         className: name
       })
     }
@@ -26,6 +27,7 @@ class RecipeList extends React.Component {
             <RecipeListItem
               key={r.className}
               title={r.title}
+              description={r.description}
               className={r.className}
               onClick={this.props.addRecipe}
             />

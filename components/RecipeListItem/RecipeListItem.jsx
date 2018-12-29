@@ -1,4 +1,7 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import './styles.scss'
 
 class RecipeListItem extends React.Component {
   constructor (props) {
@@ -15,8 +18,17 @@ class RecipeListItem extends React.Component {
 
   render () {
     return (
-      <div className="recipe-list-item" onClick={this.handleClick}>
-        <span className="recipe-title">{this.props.title}</span>
+      <div className="d-flex recipe-list-item" onClick={this.handleClick}>
+        <div className="flex-grow-1 meta">
+          <div className="recipe-title">{this.props.title}</div>
+          <div className="recipe-desc">{this.props.description}</div>
+        </div>
+        <div>
+          <FontAwesomeIcon
+            className="btn-add-recipe"
+            icon={faPlusCircle}
+          />
+        </div>
       </div>
     )
   }

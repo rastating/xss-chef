@@ -1,3 +1,23 @@
 .recipe-list-item {
   cursor: pointer;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+
+  &:hover {
+    background-color: #fafafa;
+  }
+
+  .meta {
+    padding-right: 15px;
+
+    .recipe-title {
+      font-weight: 700;
+    }
+  }
+
+  .btn-add-recipe {
+    font-size: 2em;
+    height: 100%;
+    vertical-align: middle;
+  }
 }

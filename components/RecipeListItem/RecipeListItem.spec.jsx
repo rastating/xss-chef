@@ -10,6 +10,7 @@ describe('<RecipeListItem />', () => {
     wrapper = shallow(
       <RecipeListItem
         title="Dummy Recipe"
+        description="Dummy Desc"
         className="DummyRecipe"
         onClick={onClick}
       />
@@ -30,6 +31,12 @@ describe('<RecipeListItem />', () => {
     const title = wrapper.find('.recipe-title')
     expect(title).toHaveLength(1)
     expect(title.text()).toEqual('Dummy Recipe')
+  })
+
+  it('should render the description', () => {
+    const description = wrapper.find('.recipe-desc')
+    expect(description).toHaveLength(1)
+    expect(description.text()).toEqual('Dummy Desc')
   })
 
   describe('when the item is clicked', () => {
