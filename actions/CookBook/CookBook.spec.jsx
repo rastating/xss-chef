@@ -80,3 +80,15 @@ describe('.setRecipeProperty', () => {
     expect(subject.type).toEqual(actions.COOK_BOOK_RECIPE_PROPERTY_SET)
   })
 })
+
+describe('.resetCookBook', () => {
+  let subject
+
+  beforeAll(() => {
+    subject = actions.resetCookBook()
+  })
+
+  it('should return a {type} of `COOK_BOOK_RESET`', () => {
+    expect(subject.type).toEqual('COOK_BOOK_RESET')
+  })
+})

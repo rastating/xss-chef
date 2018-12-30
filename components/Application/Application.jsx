@@ -1,5 +1,5 @@
 import React from 'react'
-import CookBookPanel from '~/components/CookBookPanel'
+import CookBookPanel from '~/containers/CookBookPanel'
 import RecipeListPanel from '~/components/RecipeListPanel'
 import PayloadPanel from '~/containers/PayloadPanel'
 import './style.scss'

@@ -4,7 +4,7 @@ import CookBook from '~/containers/CookBook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-class CookBookPanel extends React.Component {  
+class CookBookPanel extends React.Component {
   render () {
     return (
       <div>
@@ -14,7 +14,7 @@ class CookBookPanel extends React.Component {
             <FontAwesomeIcon
               className="cook-book-action reset-cook-book"
               icon={faTrashAlt}
-              onClick={this.props.onResetClick}
+              onClick={this.props.resetCookBook}
             />
           </div>
         </div>

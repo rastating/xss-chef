@@ -1,5 +1,6 @@
 import React from 'react'
 import Application from './Application'
+import CookBookPanel from '~/containers/CookBookPanel'
 import PayloadPanel from '~/containers/PayloadPanel'
 import RecipeListPanel from '~/components/RecipeListPanel'
 import { shallow } from 'enzyme'
@@ -22,7 +23,7 @@ describe('<Application />', () => {
   })
 
   it('should render a <CookBookPanel />', () => {
-    expect(wrapper.find('CookBookPanel')).toHaveLength(1)
+    expect(wrapper.find(CookBookPanel)).toHaveLength(1)
   })
 
   it('should render a <PayloadPanel />', () => {

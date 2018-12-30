@@ -3,15 +3,13 @@ import CookBookPanel from './CookBookPanel'
 import { shallow } from 'enzyme'
 
 describe('<CookBookPanel />', () => {
-  let wrapper, onAddClick, onResetClick
+  let wrapper, resetCookBook
 
   beforeEach(() => {
-    onAddClick = jest.fn()
-    onResetClick = jest.fn()
+    resetCookBook = jest.fn()
     wrapper = shallow(
       <CookBookPanel
-        onAddClick={onAddClick}
-        onResetClick={onResetClick}
+        resetCookBook={resetCookBook}
       />
     )
   })
@@ -38,10 +36,10 @@ describe('<CookBookPanel />', () => {
   })
 
   describe('when the reset button is clicked', () => {
-    it('should invoke `props.onResetClick`', () => {
+    it('should invoke `props.resetCookBook`', () => {
       const button = wrapper.find('.reset-cook-book')
       button.simulate('click')
-      expect(onResetClick).toHaveBeenCalledTimes(1)
+      expect(resetCookBook).toHaveBeenCalledTimes(1)
     })
   })
 })

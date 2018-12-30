@@ -47,4 +47,18 @@ describe('CookBook reducer', () => {
       expect(state[2].foo).toBeUndefined()
     })
   })
+
+  describe('when the action type is COOK_BOOK_RESET', () => {
+    it('should reset the cook book back to the initial [empty] state', () => {
+      let action = actions.updateCookBook(['new state'])
+      let state = reducer(undefined, action)
+      expect(state).toHaveLength(1)
+      expect(state[0]).toEqual('new state')
+
+      action = actions.resetCookBook()
+      state = reducer(state, action)
+      expect(state).toHaveLength(0)
+      expect(state).toEqual([])
+    })
+  })
 })

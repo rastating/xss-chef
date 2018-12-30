@@ -24,6 +24,10 @@ const cookBook = (previousState = initialState, action) => {
         }
       }
       break
+
+    case actions.COOK_BOOK_RESET:
+      state = initialState
+      break
   }
 
   return state
