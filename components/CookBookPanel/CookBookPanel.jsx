@@ -18,7 +18,9 @@ class CookBookPanel extends React.Component {
             />
           </div>
         </div>
-        <CookBook />
+        <div className="panel-content">
+          <CookBook />
+        </div>
       </div>
     )
   }

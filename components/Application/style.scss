@@ -15,8 +15,16 @@ html, body {
   overflow: hidden;
 
   .panel-container {
-    max-height: 100%;
-    overflow-y: auto;
+    &, & > div {
+      max-height: 100%;
+      height: 100%;
+    }
+
+    .panel-content {
+      max-height: 100%;
+      overflow-y: auto;
+      height: calc(100% - 50px);
+    }
   }
 }
 

@@ -18,10 +18,12 @@ class Application extends React.Component {
             />
           </div>
           <div className="col-md-4 panel-container">
-            <div className="title-pane">
-              Output
+            <div>
+              <div className="title-pane">
+                Output
+              </div>
+              <PayloadPanel />
             </div>
-            <PayloadPanel />
           </div>
         </div>
       </div>

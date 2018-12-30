@@ -8,7 +8,9 @@ class RecipeListPanel extends React.Component {
         <div className="title-pane">
           <span className="title">Recipes</span>
         </div>
-        <RecipeList />
+        <div className="panel-content">
+          <RecipeList />
+        </div>
       </div>
     )
   }
