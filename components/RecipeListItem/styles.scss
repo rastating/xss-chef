@@ -13,6 +13,14 @@
     .recipe-title {
       font-weight: 700;
     }
+
+    div::selection {
+      background: transparent;
+    }
+
+    div::-moz-selection {
+      background: transparent;
+    }
   }
 
   .btn-add-recipe {
