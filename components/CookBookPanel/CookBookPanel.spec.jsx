@@ -32,22 +32,9 @@ describe('<CookBookPanel />', () => {
     expect(title.find('span.title').text()).toEqual('Cook Book')
   })
 
-  it('should render a button to add new recipes', () => {
-    const button = wrapper.find('.cook-book-action.add-recipe')
-    expect(button).toHaveLength(1)
-  })
-
   it('should render a button to reset the cook book', () => {
     const button = wrapper.find('.cook-book-action.reset-cook-book')
     expect(button).toHaveLength(1)
-  })
-
-  describe('when the add recipe button is clicked', () => {
-    it('should invoke `props.onAddClick`', () => {
-      const button = wrapper.find('.add-recipe')
-      button.simulate('click')
-      expect(onAddClick).toHaveBeenCalledTimes(1)
-    })
   })
 
   describe('when the reset button is clicked', () => {
