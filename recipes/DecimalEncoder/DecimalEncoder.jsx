@@ -45,7 +45,7 @@ export function render (instance, setRecipeProperty) {
       />
       <label
         className="form-check-label"
-        for={`${instance.id}-useEval`}>
+        htmlFor={`${instance.id}-useEval`}>
         Execute with eval
       </label>
     </div>
