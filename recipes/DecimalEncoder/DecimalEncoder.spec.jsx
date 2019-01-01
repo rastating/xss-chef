@@ -16,7 +16,7 @@ describe('DecimalEncoder', () => {
       ).payload
 
       expect(payload).toMatch(
-        /String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)/
+        /^102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41/
       )
     })
 
@@ -33,22 +33,79 @@ describe('DecimalEncoder', () => {
         ).payload
 
         expect(payload).toMatch(
-          /eval\(String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)\)/
+          /^eval\(String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)\)/
+        )
+      })
+    })
+
+    describe('if `instance.decode` is truthy', () => {
+      it('should use `String.fromCharCode` to decode the payload', () => {
+        let payload = cook(
+          Object.assign({}, instance, { decode: true }),
+          { payload: payloadSample }
+        ).payload
+
+        expect(payload).toMatch(
+          /^String\.fromCharCode\(102,117,110,99,116,105,111,110,32,40,120,41,32,123,32,120,40,41,59,32,32,125,40,41\)/
         )
       })
     })
   })
 
   describe('.render', () => {
-    it('should render a checkbox to enable the use of eval', () => {
-      const wrapper = shallow(render(instance, jest.fn()))
-      expect(wrapper.find('input[type="checkbox"]')).toHaveLength(1)
+    it('should render a checkbox bound to `instance.useEval`', () => {
+      const createWrapper = (useEval) => shallow(
+        render(
+          Object.assign({}, instance, { useEval: useEval }),
+          jest.fn()
+        )
+      )
+
+      let checkBox = createWrapper(false)
+        .find('input[type="checkbox"]')
+        .findWhere(e => e.props().id.match(/.+?-useEval/))
+
+      expect(checkBox).toHaveLength(1)
+      expect(checkBox.props().checked).toBe(false)
+
+      checkBox = createWrapper(true)
+        .find('input[type="checkbox"]')
+        .findWhere(e => e.props().id.match(/.+?-useEval/))
+
+      expect(checkBox).toHaveLength(1)
+      expect(checkBox.props().checked).toBe(true)
     })
 
-    describe('when the checkbox changes value', () => {
-      it('should call `setRecipeProperty`', () => {
+    it('should render a checkbox bound to `instance.decode`', () => {
+      const createWrapper = (decode) => shallow(
+        render(
+          Object.assign({}, instance, { decode: decode }),
+          jest.fn()
+        )
+      )
+
+      let checkBox = createWrapper(false)
+        .find('input[type="checkbox"]')
+        .findWhere(e => e.props().id.match(/.+?-decode/))
+
+      expect(checkBox).toHaveLength(1)
+      expect(checkBox.props().checked).toBe(false)
+
+      checkBox = createWrapper(true)
+        .find('input[type="checkbox"]')
+        .findWhere(e => e.props().id.match(/.+?-decode/))
+
+      expect(checkBox).toHaveLength(1)
+      expect(checkBox.props().checked).toBe(true)
+    })
+
+    describe('when the decode checkbox changes value', () => {
+      it('should set `decode`', () => {
         const setRecipeProperty = jest.fn()
         const wrapper = shallow(render(instance, setRecipeProperty))
+        const checkBox = wrapper
+          .find('input[type="checkbox"]')
+          .findWhere(e => e.props().id.match(/.+?-decode/))
 
         let event = {
           target: {
@@ -56,7 +113,38 @@ describe('DecimalEncoder', () => {
           }
         }
 
-        wrapper.find('input').simulate('change', event)
+        checkBox.simulate('change', event)
+        expect(setRecipeProperty).toHaveBeenLastCalledWith(
+          'DummyTest-001',
+          'decode',
+          true
+        )
+
+        event.target.checked = false
+        checkBox.simulate('change', event)
+        expect(setRecipeProperty).toHaveBeenLastCalledWith(
+          'DummyTest-001',
+          'decode',
+          false
+        )
+      })
+    })
+
+    describe('when the eval checkbox changes value', () => {
+      it('should set `useEval`', () => {
+        const setRecipeProperty = jest.fn()
+        const wrapper = shallow(render(instance, setRecipeProperty))
+        const checkBox = wrapper
+          .find('input[type="checkbox"]')
+          .findWhere(e => e.props().id.match(/.+?-useEval/))
+
+        let event = {
+          target: {
+            checked: true
+          }
+        }
+
+        checkBox.simulate('change', event)
         expect(setRecipeProperty).toHaveBeenLastCalledWith(
           'DummyTest-001',
           'useEval',
@@ -64,12 +152,43 @@ describe('DecimalEncoder', () => {
         )
 
         event.target.checked = false
-        wrapper.find('input').simulate('change', event)
+        checkBox.simulate('change', event)
         expect(setRecipeProperty).toHaveBeenLastCalledWith(
           'DummyTest-001',
           'useEval',
           false
         )
+      })
+
+      describe('if the checkbox was checked', () => {
+        it('should set `decode` to `true`', () => {
+          const setRecipeProperty = jest.fn()
+          const wrapper = shallow(render(instance, setRecipeProperty))
+          const checkBox = wrapper
+            .find('input[type="checkbox"]')
+            .findWhere(e => e.props().id.match(/.+?-useEval/))
+
+          let event = {
+            target: {
+              checked: false
+            }
+          }
+
+          checkBox.simulate('change', event)
+          expect(setRecipeProperty).not.toHaveBeenCalledWith(
+            'DummyTest-001',
+            'decode',
+            true
+          )
+
+          event.target.checked = true
+          checkBox.simulate('change', event)
+          expect(setRecipeProperty).toHaveBeenCalledWith(
+            'DummyTest-001',
+            'decode',
+            true
+          )
+        })
       })
     })
   })
@@ -83,6 +202,10 @@ describe('DecimalEncoder', () => {
   describe('.init', () => {
     it('should define `useEval` as `true`', () => {
       expect(init().useEval).toBe(true)
+    })
+
+    it('should define `decode` as `true`', () => {
+      expect(init().decode).toBe(true)
     })
   })
 })
