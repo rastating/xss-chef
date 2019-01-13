@@ -92,4 +92,30 @@ describe('<PayloadPanel />', () => {
       expect(global.cookCallback).toHaveBeenCalledTimes(0)
     })
   })
+
+  describe('if one or more recipes have dependencies', () => {
+    it('should include a single copy of each dependency in the final payload', () => {
+      const cookBook = [{
+        id: 'DummyRecipe-0001',
+        className: 'DummyRecipe2',
+        exports: { recipe1: true }
+      }, {
+        id: 'DummyRecipe-0002',
+        className: 'DummyRecipe2',
+        exports: { recipe2: true }
+      }, {
+        id: 'DummyRecipe-0003',
+        className: 'DummyRecipe2',
+        exports: { recipe3: true }
+      }]
+
+      const wrapper = shallow(
+        <PayloadPanel cookBook={cookBook} />
+      )
+
+      const payload = wrapper.find('textarea').props().value
+      const functionCount = (payload.match(/function ajaxPost/g) || []).length
+      expect(functionCount).toEqual(1)
+    })
+  })
 })

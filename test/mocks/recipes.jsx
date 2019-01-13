@@ -32,10 +32,11 @@ let DummyRecipe = {
 
 let DummyRecipe2 = {
   title: 'Dummy Recipe 2',
-  cook: () => '',
+  cook: (instance, vars) => { return { payload: vars.payload } },
   init: () => { return { someVar: 'var' } },
   render: () => (<div />),
-  validate: () => true
+  validate: () => true,
+  dependencies: ['AjaxPost']
 }
 
 export { DummyRecipe }

@@ -1,6 +1,7 @@
 import './style.scss'
 import React from 'react'
 import * as Recipes from '~/recipes'
+import * as Scripts from '~/scripts'
 
 class PayloadPanel extends React.Component {
   constructor (props) {
@@ -14,6 +15,8 @@ class PayloadPanel extends React.Component {
     }
 
     let items = []
+    let dependencies = []
+
     for (let i = 0; i < this.props.cookBook.length; i++) {
       let instance = this.props.cookBook[i]
       let recipe = Recipes[instance.className]
@@ -22,14 +25,28 @@ class PayloadPanel extends React.Component {
         return
       }
 
+      if (recipe.dependencies) {
+        for (let dependency of recipe.dependencies) {
+          if (!dependencies.includes(dependency)) {
+            dependencies.push(dependency)
+          }
+        }
+      }
+
       items.push({
         instance: instance,
         recipe: recipe
       })
     }
 
+    let dependenciesBlock = ''
+    for (let i = 0; i < dependencies.length; i++) {
+      let source = Scripts[dependencies[i]].implementation
+      dependenciesBlock = `${dependenciesBlock}${source}\n`
+    }
+
     let exports = {
-      payload: '__XSS_CHEF_ENTRY_POINT__'
+      payload: `${dependenciesBlock}__XSS_CHEF_ENTRY_POINT__`
     }
 
     for (let i = 0; i < items.length; i++) {
