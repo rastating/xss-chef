@@ -36,7 +36,7 @@ let DummyRecipe2 = {
   init: () => { return { someVar: 'var' } },
   render: () => (<div />),
   validate: () => true,
-  dependencies: ['AjaxPost']
+  dependencies: ['AjaxRequest']
 }
 
 export { DummyRecipe }

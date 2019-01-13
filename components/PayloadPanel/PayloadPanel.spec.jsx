@@ -114,7 +114,7 @@ describe('<PayloadPanel />', () => {
       )
 
       const payload = wrapper.find('textarea').props().value
-      const functionCount = (payload.match(/function ajaxPost/g) || []).length
+      const functionCount = (payload.match(/function ajaxRequest/g) || []).length
       expect(functionCount).toEqual(1)
     })
   })

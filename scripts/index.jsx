@@ -1,3 +1,3 @@
-import * as AjaxPost from './AjaxPost'
+import * as AjaxRequest from './AjaxRequest'
 
-export { AjaxPost }
+export { AjaxRequest }

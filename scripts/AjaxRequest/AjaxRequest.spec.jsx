@@ -1,4 +1,4 @@
-import { implementation, fn } from './AjaxPost'
+import { implementation, fn } from './AjaxRequest'
 
 const originalXHR = window.XMLHttpRequest
 let mockXHR
@@ -16,8 +16,8 @@ afterEach(() => {
   window.XMLHttpRequest = originalXHR
 })
 
-it('should name the function ajaxPost', () => {
-  expect(implementation).toMatch(/function ajaxPost/)
+it('should name the function ajaxRequest', () => {
+  expect(implementation).toMatch(/function ajaxRequest/)
 })
 
 describe('if XMLHttpRequest supports .overrideMimeType', () => {
@@ -29,15 +29,20 @@ describe('if XMLHttpRequest supports .overrideMimeType', () => {
   })
 })
 
-it('should open the XHR using an asynchronous POST request', () => {
-  fn('http://127.0.0.1', 'foo=bar')
+it('should open the asynchronous XHR using the specified method', () => {
+  fn('POST', 'http://127.0.0.1', 'foo=bar')
   expect(mockXHR.open).toHaveBeenCalledWith(
     'POST', 'http://127.0.0.1', true
+  )
+
+  fn('GET', 'http://127.0.0.1/2')
+  expect(mockXHR.open).toHaveBeenCalledWith(
+    'GET', 'http://127.0.0.1/2', true
   )
 })
 
 it('should send the specified `data` using XHR', () => {
-  fn('http://127.0.0.1', 'foo=bar')
+  fn('POST', 'http://127.0.0.1', 'foo=bar')
   expect(mockXHR.send).toHaveBeenCalledWith('foo=bar')
 })
 
@@ -46,7 +51,7 @@ describe('if a callback is specified', () => {
     describe('if `readyState` === 4', () => {
       it('should invoke the callback', () => {
         return new Promise((resolve, reject) => {
-          fn('http://127.0.0.1', 'foo=bar', () => {
+          fn('POST', 'http://127.0.0.1', 'foo=bar', () => {
             resolve()
           })
 
@@ -59,7 +64,7 @@ describe('if a callback is specified', () => {
     describe('if `readyState` !== 4', () => {
       it('should not invoke the callback', () => {
         return new Promise((resolve, reject) => {
-          fn('http://127.0.0.1', 'foo=bar', () => {
+          fn('POST', 'http://127.0.0.1', 'foo=bar', () => {
             reject(new Error('invoked callback'))
           })
 
