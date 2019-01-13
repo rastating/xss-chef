@@ -29,6 +29,21 @@
         "rules": {
           "no-unused-vars": "off"
         }
+      },
+      {
+        "files": ["scripts/*.jsx"],
+        "rules": {
+          "no-unused-vars": "off"
+        },
+        "globals": {
+          "XMLHttpRequest": false
+        }
+      },
+      {
+        "files": ["scripts/*.spec.jsx"],
+        "rules": {
+          "no-global-assign": "off"
+        }
       }
     ]
 }
