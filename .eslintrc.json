@@ -31,18 +31,13 @@
         }
       },
       {
-        "files": ["scripts/*.jsx"],
+        "files": ["scripts/*/*.jsx"],
         "rules": {
-          "no-unused-vars": "off"
+          "no-unused-vars": "off",
+          "no-global-assign": "off"
         },
         "globals": {
           "XMLHttpRequest": false
-        }
-      },
-      {
-        "files": ["scripts/*.spec.jsx"],
-        "rules": {
-          "no-global-assign": "off"
         }
       }
     ]
