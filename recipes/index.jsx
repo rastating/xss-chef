@@ -1,3 +1,7 @@
+import CookieExfiltrator from './CookieExfiltrator'
 import DecimalEncoder from './DecimalEncoder'
 
-export { DecimalEncoder }
+export {
+  CookieExfiltrator,
+  DecimalEncoder
+}
