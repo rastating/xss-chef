@@ -8,7 +8,7 @@ export function addRecipe (className) {
   return {
     type: COOK_BOOK_RECIPE_ADDED,
     payload: {
-      id: `${className}-${Date.now()}`,
+      id: `${className}_${Date.now()}`,
       className: className
     }
   }

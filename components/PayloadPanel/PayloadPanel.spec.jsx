@@ -4,15 +4,15 @@ import PayloadPanel from './PayloadPanel'
 
 describe('<PayloadPanel />', () => {
   const cookBookDouble = [{
-    id: 'DummyRecipe-0001',
+    id: 'DummyRecipe_0001',
     className: 'DummyRecipe',
     exports: { recipe1: true }
   }, {
-    id: 'DummyRecipe-0002',
+    id: 'DummyRecipe_0002',
     className: 'DummyRecipe',
     exports: { recipe2: true }
   }, {
-    id: 'DummyRecipe-0003',
+    id: 'DummyRecipe_0003',
     className: 'DummyRecipe',
     exports: { recipe3: true }
   }]
@@ -52,12 +52,12 @@ describe('<PayloadPanel />', () => {
         })
 
         expect(global.cookCallback).toHaveBeenNthCalledWith(2, cookBookDouble[1], {
-          payload: 'Cooked DummyRecipe-0001',
+          payload: 'Cooked DummyRecipe_0001',
           recipe1: true
         })
 
         expect(global.cookCallback).toHaveBeenNthCalledWith(3, cookBookDouble[2], {
-          payload: 'Cooked DummyRecipe-0001 DummyRecipe-0002',
+          payload: 'Cooked DummyRecipe_0001 DummyRecipe_0002',
           recipe2: true
         })
       })
@@ -65,7 +65,7 @@ describe('<PayloadPanel />', () => {
 
     it('should render the final payload as text', () => {
       expect(wrapper.find('textarea').props().value).toEqual(
-        'Cooked DummyRecipe-0001 DummyRecipe-0002 DummyRecipe-0003'
+        'Cooked DummyRecipe_0001 DummyRecipe_0002 DummyRecipe_0003'
       )
     })
   })
@@ -73,13 +73,13 @@ describe('<PayloadPanel />', () => {
   describe('if any item in `props.cookBok` is invalid', () => {
     it('should not call the `cook` method of any recipe', () => {
       const cookBookDouble = [{
-        id: 'DummyRecipe-0001',
+        id: 'DummyRecipe_0001',
         className: 'DummyRecipe'
       }, {
-        id: 'DummyRecipe-0002',
+        id: 'DummyRecipe_0002',
         className: 'DummyRecipe'
       }, {
-        id: 'DummyRecipe-0003',
+        id: 'DummyRecipe_0003',
         className: 'DummyRecipe',
         valid: false
       }]
@@ -96,15 +96,15 @@ describe('<PayloadPanel />', () => {
   describe('if one or more recipes have dependencies', () => {
     it('should include a single copy of each dependency in the final payload', () => {
       const cookBook = [{
-        id: 'DummyRecipe-0001',
+        id: 'DummyRecipe_0001',
         className: 'DummyRecipe2',
         exports: { recipe1: true }
       }, {
-        id: 'DummyRecipe-0002',
+        id: 'DummyRecipe_0002',
         className: 'DummyRecipe2',
         exports: { recipe2: true }
       }, {
-        id: 'DummyRecipe-0003',
+        id: 'DummyRecipe_0003',
         className: 'DummyRecipe2',
         exports: { recipe3: true }
       }]

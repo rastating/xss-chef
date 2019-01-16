@@ -21,7 +21,7 @@ describe('.addRecipe', () => {
   })
 
   it('should use `className` and the current timestamp as an ID', () => {
-    expect(subject.payload.id).toEqual(`DummyRecipe-${timeDouble}`)
+    expect(subject.payload.id).toEqual(`DummyRecipe_${timeDouble}`)
   })
 
   it('should return the class name', () => {

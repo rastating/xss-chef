@@ -3,6 +3,8 @@ import React from 'react'
 import * as Recipes from '~/recipes'
 import * as Scripts from '~/scripts'
 
+const beautify = require('js-beautify').js
+
 class PayloadPanel extends React.Component {
   constructor (props) {
     super(props)
@@ -42,7 +44,7 @@ class PayloadPanel extends React.Component {
     let dependenciesBlock = ''
     for (let i = 0; i < dependencies.length; i++) {
       let source = Scripts[dependencies[i]].implementation
-      dependenciesBlock = `${dependenciesBlock}${source}\n`
+      dependenciesBlock = `${dependenciesBlock}${source}\n\n`
     }
 
     let exports = {
@@ -59,7 +61,12 @@ class PayloadPanel extends React.Component {
   }
 
   render () {
-    let payload = this.compile()
+    let payload = beautify(this.compile(), {
+      indent_size: 2,
+      space_after_anon_function: true,
+      space_after_named_function: true
+    })
+
     return (
       <div className="payload-panel">
         <textarea readOnly={true} value={payload}></textarea>

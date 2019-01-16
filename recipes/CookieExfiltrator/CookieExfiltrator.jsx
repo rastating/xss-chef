@@ -7,7 +7,7 @@ export function cook (instance, vars) {
     cookieSelection = `var c = document.cookie.match(new RegExp('(^| )${instance.cookie}=([^;]+)'));)[2]`
   }
 
-  let callbackName = `${instance.id}-cb`
+  let callbackName = `${instance.id}_cb`
   let callback = `var ${callbackName} = function () { }`
   if (instance.waitForResponse) {
     callback = `var ${callbackName} = function () { __XSS_CHEF_ENTRY_POINT__ }`

