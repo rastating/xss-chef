@@ -10,7 +10,7 @@ function ajaxRequest (method, url, data, cb) {
   if (cb) {
     xmlHttp.onreadystatechange = function () {
       if (xmlHttp.readyState === 4) {
-        cb.apply(this, arguments)
+        cb(xmlHttp)
       }
     }
   }
