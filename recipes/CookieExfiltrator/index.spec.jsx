@@ -28,4 +28,9 @@ describe('Default export', () => {
     expect(Recipe.init).toBeDefined()
     expect(typeof Recipe.init).toBe('function')
   })
+
+  it('should declare AjaxRequest as a dependency', () => {
+    expect(Recipe.dependencies).toBeDefined()
+    expect(Recipe.dependencies).toContain('AjaxRequest')
+  })
 })
