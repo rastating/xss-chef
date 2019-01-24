@@ -27,6 +27,10 @@ describe('.addRecipe', () => {
   it('should return the class name', () => {
     expect(subject.payload.className).toEqual('DummyRecipe')
   })
+
+  it('should set {payload.disabled} to `false`', () => {
+    expect(subject.payload.disabled).toBe(false)
+  })
 })
 
 describe('.disableRecipe', () => {

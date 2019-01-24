@@ -61,4 +61,24 @@ describe('CookBook reducer', () => {
       expect(state).toEqual([])
     })
   })
+
+  describe('when the action type is COOK_BOOK_RECIPE_DISABLED', () => {
+    it('should invert the disabled state of the item', () => {
+      let action = actions.addRecipe('DummyRecipe')
+      let state = reducer(undefined, action)
+
+      action = actions.addRecipe('DummyRecipe2')
+      state = reducer(state, action)
+
+      let item = state[1]
+      expect(state[1].disabled).toBe(false)
+
+      action = actions.disableRecipe(item.id)
+      state = reducer(state, action)
+      expect(state[1].disabled).toBe(true)
+
+      state = reducer(state, action)
+      expect(state[1].disabled).toBe(false)
+    })
+  })
 })

@@ -7,14 +7,15 @@ import './style.scss'
 
 const DragHandle = SortableHandle(() => (<span className="handler"></span>))
 
-const SortableItem = SortableElement(({ recipeId, props }) => (
-  <li className="cook-book-item">
+const SortableItem = SortableElement(({ recipeId, props, isDisabled }) => (
+  <li className={`cook-book-item ${isDisabled ? 'disabled' : ''}`}>
     <DragHandle />
     <CookBookItem
       id={recipeId}
       cookBook={props.cookBook}
       disableRecipe={props.disableRecipe}
       setRecipeProperty={props.setRecipeProperty}
+      disabled={isDisabled}
     />
   </li>
 ))
@@ -28,6 +29,7 @@ const SortableList = SortableContainer(({ items, props }) => {
           index={index}
           recipeId={item.id}
           props={props}
+          isDisabled={item.disabled}
         />
       ))}
     </ul>

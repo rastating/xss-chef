@@ -27,10 +27,10 @@ class CookBookItem extends React.Component {
   }
 
   getStateClassName (isValid) {
-    if (!isValid) {
-      return 'has-error'
-    } else if (this.props.disabled) {
+    if (this.props.disabled) {
       return 'disabled'
+    } else if (!isValid) {
+      return 'has-error'
     } else {
       return 'enabled'
     }

@@ -28,6 +28,15 @@ const cookBook = (previousState = initialState, action) => {
     case actions.COOK_BOOK_RESET:
       state = initialState
       break
+
+    case actions.COOK_BOOK_RECIPE_DISABLED:
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].id === payload.id) {
+          state[i].disabled = !state[i].disabled
+          break
+        }
+      }
+      break
   }
 
   return state

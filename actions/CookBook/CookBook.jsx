@@ -9,7 +9,8 @@ export function addRecipe (className) {
     type: COOK_BOOK_RECIPE_ADDED,
     payload: {
       id: `${className}_${Date.now()}`,
-      className: className
+      className: className,
+      disabled: false
     }
   }
 }
