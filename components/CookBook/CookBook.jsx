@@ -5,19 +5,14 @@ import CookBookItem from '~/components/CookBookItem'
 
 import './style.scss'
 
-const DragHandle = SortableHandle(() => (<span className="handler"></span>))
-
 const SortableItem = SortableElement(({ recipeId, props, isDisabled }) => (
-  <li className={`cook-book-item ${isDisabled ? 'disabled' : ''}`}>
-    <DragHandle />
-    <CookBookItem
-      id={recipeId}
-      cookBook={props.cookBook}
-      disableRecipe={props.disableRecipe}
-      setRecipeProperty={props.setRecipeProperty}
-      disabled={isDisabled}
-    />
-  </li>
+  <CookBookItem
+    id={recipeId}
+    cookBook={props.cookBook}
+    disableRecipe={props.disableRecipe}
+    setRecipeProperty={props.setRecipeProperty}
+    disabled={isDisabled}
+  />
 ))
 
 const SortableList = SortableContainer(({ items, props }) => {

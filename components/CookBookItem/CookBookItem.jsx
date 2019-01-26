@@ -4,6 +4,8 @@ import { faBan } from '@fortawesome/free-solid-svg-icons'
 import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 import * as Recipes from '~/recipes'
 
+const DragHandle = SortableHandle(() => (<span className="handler"></span>))
+
 class CookBookItem extends React.Component {
   constructor (props) {
     super(props)
@@ -49,20 +51,23 @@ class CookBookItem extends React.Component {
     let isValid = recipe && recipe.validate(instance)
 
     return (
-      <div className={ `recipe-item ${this.getStateClassName(isValid)}` }>
-        <div className="recipe-title">
-          <span className="float-left">
-            { recipe.title }
-          </span>
-          <FontAwesomeIcon
-            icon={faBan}
-            className="float-right"
-            onClick={this.disableRecipe}
-          />
-        </div>
+      <li className={`cook-book-item ${this.getStateClassName(isValid)}`}>
+        <DragHandle />
+        <div className="recipe-item">
+          <div className="recipe-title">
+            <span className="float-left">
+              { recipe.title }
+            </span>
+            <FontAwesomeIcon
+              icon={faBan}
+              className="float-right"
+              onClick={this.disableRecipe}
+            />
+          </div>
 
-        { recipe.render(instance, this.props.setRecipeProperty) }
-      </div>
+          { recipe.render(instance, this.props.setRecipeProperty) }
+        </div>
+      </li>
     )
   }
 }
