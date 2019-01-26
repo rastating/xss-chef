@@ -45,4 +45,13 @@ describe('CookBook actions roll-up', () => {
     expect(actions.resetCookBook).toBeDefined()
     expect(typeof actions.resetCookBook).toBe('function')
   })
+
+  it('should export the delete recipe action constant', () => {
+    expect(actions.COOK_BOOK_RECIPE_DELETED).toBeDefined()
+  })
+
+  it('should export a deleteRecipe function', () => {
+    expect(actions.deleteRecipe).toBeDefined()
+    expect(typeof actions.deleteRecipe).toBe('function')
+  })
 })

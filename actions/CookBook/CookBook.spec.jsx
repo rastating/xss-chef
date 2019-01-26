@@ -96,3 +96,15 @@ describe('.resetCookBook', () => {
     expect(subject.type).toEqual('COOK_BOOK_RESET')
   })
 })
+
+describe('.deleteRecipe', () => {
+  it('should have a {type} of `actions.COOK_BOOK_RECIPE_DELETED`', () => {
+    const action = actions.deleteRecipe('DummyRecipe_001')
+    expect(action.type).toBe(actions.COOK_BOOK_RECIPE_DELETED)
+  })
+
+  it('should include the recipe ID in the payload', () => {
+    const action = actions.deleteRecipe('DummyRecipe_001')
+    expect(action.payload.id).toBe('DummyRecipe_001')
+  })
+})

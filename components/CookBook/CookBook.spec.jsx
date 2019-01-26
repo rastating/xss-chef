@@ -10,21 +10,30 @@ describe('<CookBook />', () => {
     className: 'DummyRecipe'
   }, {
     id: 'DummyRecipe-0002',
-    className: 'DummyRecipe'
+    className: 'DummyRecipe',
+    disabled: true
   }, {
     id: 'DummyRecipe-0003',
     className: 'DummyRecipe',
     valid: false
   }]
 
-  let wrapper, updateCookBook
+  let wrapper, updateCookBook, disableRecipe, setRecipeProperty, deleteRecipe
+
   beforeEach(() => {
     updateCookBook = jest.fn()
+    disableRecipe = jest.fn()
+    setRecipeProperty = jest.fn()
+    deleteRecipe = jest.fn()
+
     wrapper = mount(
       <ReduxWrapper>
         <CookBook
           cookBook={cookBookDouble}
           updateCookBook={updateCookBook}
+          disableRecipe={disableRecipe}
+          setRecipeProperty={setRecipeProperty}
+          deleteRecipe={deleteRecipe}
         />
       </ReduxWrapper>
     )
@@ -49,6 +58,33 @@ describe('<CookBook />', () => {
     expect(items.at(0).props().id).toEqual('DummyRecipe-0001')
     expect(items.at(1).props().id).toEqual('DummyRecipe-0002')
     expect(items.at(2).props().id).toEqual('DummyRecipe-0003')
+  })
+
+  it('should pass `props.cookBook` to each <CookBookItem />', () => {
+    let items = wrapper.find('CookBookItem')
+    expect(items.at(0).props().cookBook).toBe(cookBookDouble)
+  })
+
+  it('should pass `props.disableRecipe` to each <CookBookItem />', () => {
+    let items = wrapper.find('CookBookItem')
+    expect(items.at(0).props().disableRecipe).toBe(disableRecipe)
+  })
+
+  it('should pass `props.setRecipeProperty` to each <CookBookItem />', () => {
+    let items = wrapper.find('CookBookItem')
+    expect(items.at(0).props().setRecipeProperty).toBe(setRecipeProperty)
+  })
+
+  it('should pass `props.deleteRecipe` to each <CookBookItem />', () => {
+    let items = wrapper.find('CookBookItem')
+    expect(items.at(0).props().deleteRecipe).toBe(deleteRecipe)
+  })
+
+  it('should pass the disabled state of an item to each corresponding <CookBookItem />', () => {
+    let items = wrapper.find('CookBookItem')
+    expect(items.at(0).props().disabled).not.toBeDefined()
+    expect(items.at(1).props().disabled).toBe(true)
+    expect(items.at(2).props().disabled).not.toBeDefined()
   })
 
   it('should invoke `props.updateCookBook` after the item order is changed', () => {

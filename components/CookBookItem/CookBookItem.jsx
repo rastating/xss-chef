@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBan } from '@fortawesome/free-solid-svg-icons'
+import { faBan, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 import * as Recipes from '~/recipes'
 import './style.scss'
@@ -14,6 +14,7 @@ class CookBookItem extends React.Component {
     this.loadItem = this.loadItem.bind(this)
     this.getStateClassName = this.getStateClassName.bind(this)
     this.disableRecipe = this.disableRecipe.bind(this)
+    this.deleteRecipe = this.deleteRecipe.bind(this)
   }
 
   loadItem () {
@@ -45,6 +46,12 @@ class CookBookItem extends React.Component {
     }
   }
 
+  deleteRecipe () {
+    if (this.props.deleteRecipe) {
+      this.props.deleteRecipe(this.props.id)
+    }
+  }
+
   render () {
     let item = this.loadItem()
     let recipe = item.recipe
@@ -60,6 +67,13 @@ class CookBookItem extends React.Component {
               { recipe.title }
             </span>
             <FontAwesomeIcon
+              id="delete"
+              icon={faTrashAlt}
+              className="float-right"
+              onClick={this.deleteRecipe}
+            />
+            <FontAwesomeIcon
+              id="disable"
               icon={faBan}
               className="float-right"
               onClick={this.disableRecipe}

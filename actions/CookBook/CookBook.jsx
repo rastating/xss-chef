@@ -3,6 +3,7 @@ export const COOK_BOOK_RECIPE_DISABLED = 'COOK_BOOK_RECIPE_DISABLED'
 export const COOK_BOOK_UPDATED = 'COOK_BOOK_UPDATED'
 export const COOK_BOOK_RECIPE_PROPERTY_SET = 'COOK_BOOK_RECIPE_PROPERTY_SET'
 export const COOK_BOOK_RESET = 'COOK_BOOK_RESET'
+export const COOK_BOOK_RECIPE_DELETED = 'COOK_BOOK_RECIPE_DELETED'
 
 export function addRecipe (className) {
   return {
@@ -45,5 +46,14 @@ export function setRecipeProperty (id, key, value) {
 export function resetCookBook () {
   return {
     type: COOK_BOOK_RESET
+  }
+}
+
+export function deleteRecipe (id) {
+  return {
+    type: COOK_BOOK_RECIPE_DELETED,
+    payload: {
+      id: id
+    }
   }
 }

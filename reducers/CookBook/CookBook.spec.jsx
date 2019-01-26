@@ -81,4 +81,21 @@ describe('CookBook reducer', () => {
       expect(state[1].disabled).toBe(false)
     })
   })
+
+  describe('when the action type is COOK_BOOK_RECIPE_DELETED', () => {
+    it('should remove the specified item from the state', () => {
+      let action = actions.addRecipe('DummyRecipe')
+      let state = reducer(undefined, action)
+
+      action = actions.addRecipe('DummyRecipe2')
+      state = reducer(state, action)
+
+      const item = state[0]
+      action = actions.deleteRecipe(item.id)
+      state = reducer(state, action)
+
+      expect(state).toHaveLength(1)
+      expect(state[0].className).toBe('DummyRecipe2')
+    })
+  })
 })

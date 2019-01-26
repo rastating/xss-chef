@@ -37,6 +37,10 @@ const cookBook = (previousState = initialState, action) => {
         }
       }
       break
+
+    case actions.COOK_BOOK_RECIPE_DELETED:
+      state = state.filter(i => i.id !== payload.id)
+      break
   }
 
   return state

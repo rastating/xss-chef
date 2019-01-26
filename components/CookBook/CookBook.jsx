@@ -11,6 +11,7 @@ const SortableItem = SortableElement(({ recipeId, props, isDisabled }) => (
     cookBook={props.cookBook}
     disableRecipe={props.disableRecipe}
     setRecipeProperty={props.setRecipeProperty}
+    deleteRecipe={props.deleteRecipe}
     disabled={isDisabled}
   />
 ))

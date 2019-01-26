@@ -15,14 +15,17 @@ describe('<CookBookItem />', () => {
     valid: false
   }]
 
-  let wrapper, disableRecipe
+  let wrapper, disableRecipe, deleteRecipe
 
   beforeEach(() => {
     disableRecipe = jest.fn()
+    deleteRecipe = jest.fn()
+
     wrapper = shallow(
       <CookBookItem
         cookBook={cookBookDouble}
         disableRecipe={disableRecipe}
+        deleteRecipe={deleteRecipe}
         id="DummyRecipe-0002"
       />
     )
@@ -54,14 +57,26 @@ describe('<CookBookItem />', () => {
   })
 
   it('should render a "disable" button', () => {
-    const button = wrapper.find('.recipe-title FontAwesomeIcon')
+    const button = wrapper.find('.recipe-title FontAwesomeIcon[id="disable"]')
+    expect(button).toHaveLength(1)
+  })
+
+  it('should render a "delete" button', () => {
+    const button = wrapper.find('.recipe-title FontAwesomeIcon[id="delete"]')
     expect(button).toHaveLength(1)
   })
 
   describe('when the disable button is clicked', () => {
     it('should invoke `props.disableRecipe`', () => {
-      wrapper.find('.recipe-title FontAwesomeIcon').simulate('click')
+      wrapper.find('.recipe-title FontAwesomeIcon[id="disable"]').simulate('click')
       expect(disableRecipe).toHaveBeenCalledWith('DummyRecipe-0002')
+    })
+  })
+
+  describe('when the delete button is clicked', () => {
+    it('should invoke `props.deleteRecipe`', () => {
+      wrapper.find('.recipe-title FontAwesomeIcon[id="delete"]').simulate('click')
+      expect(deleteRecipe).toHaveBeenCalledWith('DummyRecipe-0002')
     })
   })
 

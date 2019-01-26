@@ -48,4 +48,24 @@ describe('<CookBook />', () => {
       payload: { id: 'DummyId' }
     }))
   })
+
+  it('should map the setRecipeProperty action creator', () => {
+    wrapper.props().setRecipeProperty('DummyId', 'key', 'value')
+    expect(store.isActionDispatched({
+      type: 'COOK_BOOK_RECIPE_PROPERTY_SET',
+      payload: {
+        id: 'DummyId',
+        key: 'key',
+        value: 'value'
+      }
+    }))
+  })
+
+  it('should map the deleteRecipe action creator', () => {
+    wrapper.props().deleteRecipe('DummyId')
+    expect(store.isActionDispatched({
+      type: 'COOK_BOOK_RECIPE_DELETED',
+      payload: { id: 'DummyId' }
+    }))
+  })
 })
