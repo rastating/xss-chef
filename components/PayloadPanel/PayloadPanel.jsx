@@ -13,7 +13,7 @@ class PayloadPanel extends React.Component {
 
   compile () {
     if (!this.props.cookBook) {
-      return
+      return ''
     }
 
     let items = []
@@ -23,8 +23,12 @@ class PayloadPanel extends React.Component {
       let instance = this.props.cookBook[i]
       let recipe = Recipes[instance.className]
 
+      if (instance.disabled) {
+        continue
+      }
+
       if (!recipe.validate(instance)) {
-        return
+        return ''
       }
 
       if (recipe.dependencies) {

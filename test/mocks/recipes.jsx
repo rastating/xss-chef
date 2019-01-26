@@ -32,7 +32,11 @@ let DummyRecipe = {
 
 let DummyRecipe2 = {
   title: 'Dummy Recipe 2',
-  cook: (instance, vars) => { return { payload: vars.payload } },
+  cook: (instance, vars) => {
+    return Object.assign({}, instance.exports, {
+      payload: `${vars.payload.replace('__XSS_CHEF_ENTRY_POINT__', 'Cooked')} ${instance.id}`.trim()
+    })
+  },
   init: () => { return { someVar: 'var' } },
   render: () => (<div />),
   validate: () => true,
