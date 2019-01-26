@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBan } from '@fortawesome/free-solid-svg-icons'
 import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 import * as Recipes from '~/recipes'
+import './style.scss'
 
 const DragHandle = SortableHandle(() => (<span className="handler"></span>))
 

@@ -4,6 +4,8 @@ import CookBook from '~/containers/CookBook'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
+import './style.scss'
+
 class CookBookPanel extends React.Component {
   render () {
     return (
