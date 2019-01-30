@@ -4,6 +4,7 @@ import DecimalEncoder from './DecimalEncoder'
 import StringExfiltrator from './StringExfiltrator'
 import Keylogger from './Keylogger'
 import LinkHijacker from './LinkHijacker'
+import WordPressCreateUser from './WordPressCreateUser'
 
 export {
   BodyReplacer,
@@ -11,5 +12,6 @@ export {
   DecimalEncoder,
   LinkHijacker,
   Keylogger,
-  StringExfiltrator
+  StringExfiltrator,
+  WordPressCreateUser
 }
