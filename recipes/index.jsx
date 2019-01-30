@@ -5,8 +5,10 @@ import StringExfiltrator from './StringExfiltrator'
 import Keylogger from './Keylogger'
 import LinkHijacker from './LinkHijacker'
 import WordPressCreateUser from './WordPressCreateUser'
+import Alert from './Alert'
 
 export {
+  Alert,
   BodyReplacer,
   CookieExfiltrator,
   DecimalEncoder,
