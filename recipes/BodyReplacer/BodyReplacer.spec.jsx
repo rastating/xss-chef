@@ -19,6 +19,18 @@ describe('BodyReplacer', () => {
       )
     })
 
+    it('should transform CRLF and LF instances into escaped new lines', () => {
+      const payload = cook({
+        markup: `<strong>\r\ntest\n</strong>`
+      }, vars).payload
+
+      expect(payload).toEqual(
+        expect.stringContaining(
+          `<strong>\\ntest\\n</strong>`
+        )
+      )
+    })
+
     it('should escape any single quotes in the specified markup', () => {
       const payload = cook({
         markup: `<strong>'test'</strong>`

@@ -5,6 +5,7 @@ export function cook (instance, vars) {
   const markup = instance.markup
     .replace(/\\/g, '\\\\')
     .replace(/'/g, `\\'`)
+    .replace(/\r?\n/g, '\\n')
 
   const payload = [
     `document.body.innerHTML = '${markup}';`,
