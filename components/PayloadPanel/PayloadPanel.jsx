@@ -9,7 +9,15 @@ class PayloadPanel extends React.Component {
   constructor (props) {
     super(props)
     this.compile = this.compile.bind(this)
+    this.copyToClipboard = this.copyToClipboard.bind(this)
   }
+  
+  copyToClipboard(e) {
+    this.payloadText.select();
+    document.execCommand('copy');
+    // Uncomment to show the payload text highlighted on copy.
+    // e.target.focus();
+  };
 
   compile () {
     if (!this.props.cookBook) {
@@ -72,8 +80,8 @@ class PayloadPanel extends React.Component {
     })
 
     return (
-      <div className="payload-panel">
-        <textarea readOnly={true} value={payload}></textarea>
+      <div className="payload-panel" onClick={this.copyToClipboard}>
+        <textarea ref={(payloadText) => this.payloadText = payloadText} readOnly={true} value={payload}></textarea>
       </div>
     )
   }
