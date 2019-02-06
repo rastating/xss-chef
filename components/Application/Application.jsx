@@ -2,16 +2,24 @@ import React from 'react'
 import CookBookPanel from '~/containers/CookBookPanel'
 import RecipeListPanel from '~/components/RecipeListPanel'
 import PayloadPanel from '~/containers/PayloadPanel'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.scss'
 
 class Application extends React.Component {
   constructor(props, context) {
   super(props, context);
-  this.onClick = () => { this.child.copyToClipboard() }
+  this.onClick = () => { 
+    this.child.copyToClipboard();
+    toast.success("Payload copied!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+  }
 }
 
   render () {
     return (
+      <div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 panel-container">
@@ -32,6 +40,8 @@ class Application extends React.Component {
             </div>
           </div>
         </div>
+      </div>
+      <ToastContainer />
       </div>
     )
   }
