@@ -5,6 +5,11 @@ import PayloadPanel from '~/containers/PayloadPanel'
 import './style.scss'
 
 class Application extends React.Component {
+  constructor(props, context) {
+  super(props, context);
+  this.onClick = () => { this.child.copyToClipboard() }
+}
+
   render () {
     return (
       <div className="container-fluid">
@@ -21,8 +26,9 @@ class Application extends React.Component {
             <div>
               <div className="title-pane">
                 Output
+                <button className="copy-button" onClick={this.onClick}>Copy Payload</button>
               </div>
-              <PayloadPanel />
+              <PayloadPanel onRef={ref => (this.child = ref)}/>
             </div>
           </div>
         </div>

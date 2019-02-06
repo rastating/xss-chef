@@ -9,9 +9,13 @@ class PayloadPanel extends React.Component {
   constructor (props) {
     super(props)
     this.compile = this.compile.bind(this)
-    this.copyToClipboard = this.copyToClipboard.bind(this)
   }
-  
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(null)
+  }
   copyToClipboard(e) {
     this.payloadText.select();
     document.execCommand('copy');
@@ -80,7 +84,7 @@ class PayloadPanel extends React.Component {
     })
 
     return (
-      <div className="payload-panel" onClick={this.copyToClipboard}>
+      <div className="payload-panel">
         <textarea ref={(payloadText) => this.payloadText = payloadText} readOnly={true} value={payload}></textarea>
       </div>
     )
