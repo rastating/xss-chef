@@ -17,6 +17,7 @@ class CookBookPanel extends React.Component {
               className="cook-book-action reset-cook-book"
               icon={faTrashAlt}
               onClick={this.props.resetCookBook}
+              title="Clear Cook Book"
             />
           </div>
         </div>
