@@ -23,7 +23,7 @@ class Application extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="h-100">
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4 panel-container">
