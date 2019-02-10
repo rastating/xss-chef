@@ -3,7 +3,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js",
-    "start:dev": "webpack-dev-server --config webpack.dev.js"
+    "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.10",
