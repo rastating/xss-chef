@@ -170,14 +170,21 @@ describe('CookieExfiltrator', () => {
 
   describe('.render', () => {
     const instance = init()
+    const setRecipeProperty = jest.fn()
 
-    it('should render a textbox bound to `instance.callbackUrl`', () => {
-      const textBox = shallow(
-        render(Object.assign({}, instance, { callbackUrl: 'test' }))
-      ).find('input[type="text"]')
+    beforeEach(() => {
+      instance.id = 'instance_id'
+      setRecipeProperty.mockClear()
+    })
 
-      expect(textBox).toHaveLength(1)
-      expect(textBox.props().value).toBe('test')
+    it('should render a RecipeTextField for the callback URL', () => {
+      const wrapper = shallow(render(instance, setRecipeProperty))
+      const field = wrapper.find('RecipeTextField[bindTo="callbackUrl"]')
+      expect(field).toHaveLength(1)
+      expect(field.props().instance).toBe(instance)
+      expect(field.props().placeholder).toBe('Example: http://your.domain.com/cookie')
+      expect(field.props().setRecipeProperty).toBe(setRecipeProperty)
+      expect(field.props().label).toBe('Callback URL')
     })
 
     it('should render a dropdown list bound to `instance.method`', () => {
@@ -207,27 +214,31 @@ describe('CookieExfiltrator', () => {
       expect(option.text()).toBe('GET: AJAX')
     })
 
-    it('should render a checkbox bound to `instance.waitForResponse`', () => {
-      const createWrapper = (waitForResponse) => shallow(
-        render(
-          Object.assign({}, instance, { waitForResponse: waitForResponse }),
-          jest.fn()
+    describe('when the exfiltration method is changed', () => {
+      it('should invoke `setRecipeProperty`', () => {
+        const dropDown = shallow(render(instance, setRecipeProperty)).find('select')
+        dropDown.simulate('change', {
+          target: { value: 'post:ajax' }
+        })
+
+        expect(setRecipeProperty).toHaveBeenCalledWith(
+          'instance_id',
+          'method',
+          'post:ajax'
         )
-      )
+      })
+    })
 
-      let checkBox = createWrapper(true)
-        .find('input[type="checkbox"]')
-        .findWhere(e => e.props().id.match(/.+?-waitForResponse/))
-
-      expect(checkBox).toHaveLength(1)
-      expect(checkBox.props().checked).toBe(true)
-
-      checkBox = createWrapper(false)
-        .find('input[type="checkbox"]')
-        .findWhere(e => e.props().id.match(/.+?-waitForResponse/))
-
-      expect(checkBox).toHaveLength(1)
-      expect(checkBox.props().checked).toBe(false)
+    it('should render a RecipeCheckBox bound to `instance.waitForResponse`', () => {
+      const wrapper = shallow(render(instance, setRecipeProperty))
+      const field = wrapper.find('RecipeCheckBox[bindTo="waitForResponse"]')
+      expect(field).toHaveLength(1)
+      expect(field.props()).toEqual({
+        bindTo: 'waitForResponse',
+        instance: instance,
+        label: 'Halt next operation until response is received',
+        setRecipeProperty: setRecipeProperty
+      })
     })
   })
 })

@@ -1,4 +1,5 @@
 import React from 'react'
+import RecipeCheckBox from '~/components/RecipeCheckBox'
 import RecipeTextField from '~/components/RecipeTextField'
 
 export function cook (instance, vars) {
@@ -55,20 +56,13 @@ export function init () {
 export function render (instance, setRecipeProperty) {
   return (
     <div>
-      <div className="form-group">
-        <label htmlFor={`${instance.id}-callbackUrl`}>Callback URL</label>
-        <input id={`${instance.id}-callbackUrl`}
-          type="text"
-          className="form-control"
-          placeholder="http://your.domain.com/cookie"
-          value={instance.callbackUrl}
-          onChange={(e) => setRecipeProperty(
-            instance.id,
-            'callbackUrl',
-            e.target.value
-          )}
-        />
-      </div>
+      <RecipeTextField
+        bindTo="callbackUrl"
+        instance={instance}
+        label="Callback URL"
+        placeholder="Example: http://your.domain.com/cookie"
+        setRecipeProperty={setRecipeProperty}
+      />
 
       <RecipeTextField
         bindTo="cookie"
@@ -93,24 +87,13 @@ export function render (instance, setRecipeProperty) {
           <option value="post:ajax">POST: AJAX</option>
         </select>
       </div>
-      <div className="float-left mr-3 form-group form-check">
-        <input
-          id={`${instance.id}-waitForResponse`}
-          type="checkbox"
-          checked={instance.waitForResponse}
-          className="form-check-input"
-          onChange={e => setRecipeProperty(
-            instance.id,
-            'waitForResponse',
-            e.target.checked
-          )}
-        />
-        <label
-          className="form-check-label"
-          htmlFor={`${instance.id}-waitForResponse`}>
-          Halt next operation until response is received
-        </label>
-      </div>
+
+      <RecipeCheckBox
+        bindTo="waitForResponse"
+        instance={instance}
+        label="Halt next operation until response is received"
+        setRecipeProperty={setRecipeProperty}
+      />
     </div>
   )
 }
