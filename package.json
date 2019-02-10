@@ -4,7 +4,8 @@
     "build": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
-    "test": "jest"
+    "test": "jest",
+    "test-ci": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.10",
@@ -28,6 +29,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.6.0",
+    "coveralls": "^3.0.2",
     "css-loader": "^1.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
