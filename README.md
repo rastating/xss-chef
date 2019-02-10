@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rastating/xss-chef.svg?branch=development)](https://travis-ci.org/rastating/xss-chef) [![Maintainability](https://api.codeclimate.com/v1/badges/7cb5974b1638eebefa3b/maintainability)](https://codeclimate.com/github/rastating/xss-chef/maintainability) [![Coverage Status](https://coveralls.io/repos/github/rastating/xss-chef/badge.svg?branch=development)](https://coveralls.io/github/rastating/xss-chef?branch=development)
+
 What is XSS Chef?
 =================
 XSS Chef is a small React.js application inspired by [CyberChef](https://gchq.github.io/CyberChef/), which provides users with a modular way to build JavaScript payloads to typically be used during penetration tests to demonstrate cross-site scripting vulnerabilities.
