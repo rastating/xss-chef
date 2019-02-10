@@ -55,29 +55,12 @@ html, body {
   margin-left: 5px;
 }
 
-button {
-  -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  display: inline-flex;
-  margin: auto;
-  max-width: 180px;
-  max-height: 100%;
-  text-decoration: none;
-  border-radius: 4px;
-  align-items: center;
+.clipboard-toast {
+  background-color: #d4edda !important;
+  color: #155724;
+  text-align: center;
 }
 
-.copy-button {
-  float: right;
-  color: rgba(30, 22, 54, 0.6);
-  box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
-}
-
-.copy-button:hover {
-  float: right;
-  color: rgba(255, 255, 255, 0.85);
-  box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+.clipboard-toast-progress {
+  background-color: #a9d4b3 !important;
 }

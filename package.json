@@ -51,7 +51,8 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/test/mocks/styleMock.js",
-      "recipes$": "<rootDir>/test/mocks/recipes.jsx"
+      "recipes$": "<rootDir>/test/mocks/recipes.jsx",
+      "react-toastify": "<rootDir>/test/mocks/toastify.jsx"
     },
     "setupFiles": [
       "<rootDir>/test/setup/enzyme.js"

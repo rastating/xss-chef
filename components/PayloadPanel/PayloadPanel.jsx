@@ -1,5 +1,7 @@
 import './style.scss'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import * as Recipes from '~/recipes'
 import * as Scripts from '~/scripts'
 
@@ -8,19 +10,16 @@ const beautify = require('js-beautify').js
 class PayloadPanel extends React.Component {
   constructor (props) {
     super(props)
+
+    this.payloadTextArea = React.createRef()
     this.compile = this.compile.bind(this)
+    this.copyToClipboard = this.copyToClipboard.bind(this)
   }
-  componentDidMount() {
-    this.props.onRef(this)
-  }
-  componentWillUnmount() {
-    this.props.onRef(null)
-  }
-  copyToClipboard(e) {
-    this.payloadText.select();
-    document.execCommand('copy');
-    // Uncomment to show the payload text highlighted on copy.
-    // e.target.focus();
+
+  copyToClipboard () {
+    this.props.onPayloadCopy()
+    this.payloadTextArea.current.select()
+    document.execCommand('copy')
   };
 
   compile () {
@@ -84,8 +83,25 @@ class PayloadPanel extends React.Component {
     })
 
     return (
-      <div className="payload-panel">
-        <textarea ref={(payloadText) => this.payloadText = payloadText} readOnly={true} value={payload}></textarea>
+      <div>
+        <div className="title-pane">
+          <span className="title">Output</span>
+          <div className="float-right d-inline">
+            <FontAwesomeIcon
+              className="cook-book-action copy-to-clipboard"
+              icon={faCopy}
+              onClick={this.copyToClipboard}
+              title="Copy to Clipboard"
+            />
+          </div>
+        </div>
+        <div className="payload-panel">
+          <textarea
+            ref={this.payloadTextArea}
+            readOnly={true}
+            value={payload}>
+          </textarea>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import PayloadPanel from './PayloadPanel'
 
 describe('<PayloadPanel />', () => {
@@ -18,12 +18,18 @@ describe('<PayloadPanel />', () => {
     exports: { recipe3: true }
   }]
 
-  let wrapper
+  let wrapper, onPayloadCopy
 
   beforeEach(() => {
+    document.execCommand = jest.fn()
     global.cookCallback = jest.fn()
-    wrapper = shallow(
-      <PayloadPanel cookBook={cookBookDouble} />
+    onPayloadCopy = jest.fn()
+
+    wrapper = mount(
+      <PayloadPanel
+        cookBook={cookBookDouble}
+        onPayloadCopy={onPayloadCopy}
+      />
     )
   })
 
@@ -39,6 +45,10 @@ describe('<PayloadPanel />', () => {
     )
 
     expect(wrapper.find('div.test')).toHaveLength(0)
+  })
+
+  it('should render a copy button', () => {
+    expect(wrapper.find('FontAwesomeIcon.copy-to-clipboard')).toHaveLength(1)
   })
 
   describe('if all items in `props.cookBook` are valid', () => {
@@ -126,6 +136,21 @@ describe('<PayloadPanel />', () => {
       expect(wrapper.find('textarea').props().value).toEqual(
         'Cooked DummyRecipe_0001 DummyRecipe_0003'
       )
+    })
+  })
+
+  describe('when the copy button is clicked', () => {
+    it('should execute the `copy` command', () => {
+      const button = wrapper.find('FontAwesomeIcon.copy-to-clipboard')
+      button.simulate('click')
+      expect(document.execCommand).toHaveBeenCalledWith('copy')
+    })
+
+    it('should invoke `props.onPayloadCopy`', () => {
+      expect(onPayloadCopy).not.toHaveBeenCalled()
+      const button = wrapper.find('FontAwesomeIcon.copy-to-clipboard')
+      button.simulate('click')
+      expect(onPayloadCopy).toHaveBeenCalled()
     })
   })
 })
