@@ -21,13 +21,17 @@
           "after": false,
           "expect": false,
           "jest": false,
-          "it": false
+          "it": false,
+          "localStorage": false
         }
       },
       {
         "files": ["**/*.jsx"],
         "rules": {
           "no-unused-vars": "off"
+        },
+        "globals": {
+          "localStorage": false
         }
       },
       {
