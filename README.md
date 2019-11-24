@@ -1,7 +1,7 @@
 <p align="center">
 <h1 align="center">XSS Chef</h1>
 <p align="center">
-  <a href="https://travis-ci.org/rastating/xss-chef"><img src="https://travis-ci.org/rastating/xss-chef.svg?branch=development" alt="Build Status" height="20" /></a> <a href="https://codeclimate.com/github/rastating/xss-chef/maintainability"><img src="https://api.codeclimate.com/v1/badges/7cb5974b1638eebefa3b/maintainability" /></a> <a href='https://coveralls.io/github/rastating/xss-chef?branch=development'><img src='https://coveralls.io/repos/github/rastating/xss-chef/badge.svg?branch=development' alt='Coverage Status' /></a> <a href="https://www.patreon.com/rastating"><img src="https://img.shields.io/badge/patreon-support_this_project-orange" alt="Patreon" /></a>
+  <a href="https://travis-ci.org/rastating/xss-chef"><img src="https://travis-ci.org/rastating/xss-chef.svg?branch=development" alt="Build Status" height="20" /></a> <a href="https://codeclimate.com/github/rastating/xss-chef/maintainability"><img src="https://api.codeclimate.com/v1/badges/7cb5974b1638eebefa3b/maintainability" /></a> <a href='https://coveralls.io/github/rastating/xss-chef?branch=development'><img src='https://coveralls.io/repos/github/rastating/xss-chef/badge.svg?branch=development' alt='Coverage Status' /></a>
 </p>
 <p align="center">
   A web application for generating custom XSS payloads
